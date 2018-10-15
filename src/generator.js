@@ -33,7 +33,7 @@ class Generator {
    *
    * @static
    * @param {*} - key
-   * @returns {*} - The type of the key
+   * @returns {string} - The gql type of the key
    * @memberof Generator
    */
   static getType(key) {
