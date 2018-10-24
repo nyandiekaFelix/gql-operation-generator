@@ -57,11 +57,10 @@ class Generator {
   mapArgumentType() {
     const props = Object.keys(this.data);
     const reducer = (dataKey, currKey, index) => (
-      `(${ dataKey }${ index !== 0 ? ',' : ''}
-        $${ currKey }: ${ getType(this.data[currKey]) })`
+      `${ dataKey }${ index !== 0 ? ', ' : ''}$${ currKey }: ${ this.constructor.getType(this.data[currKey]) }`
     );
 
-    return props.length ? `${ props.reduce(reducer, '') }` : ''
+    return props.length ? `(${ props.reduce(reducer, '') })` : ''
   }
 
 
@@ -74,11 +73,10 @@ class Generator {
   mapArgumentName() {
     const props = Object.keys(this.data);
     const reducer = (dataKey, currKey, index) => (
-      `(${ dataKey }${ index !== 0 ? ',' : '' }
-        ${ currKey }: $${ currKey })`
+      `${ dataKey }${ index !== 0 ? ', ' : '' }${ currKey }: $${ currKey }`
     );
 
-    return props.length ? `${ props.reduce(reducer, '') }` : ''
+    return props.length ? `(${ props.reduce(reducer, '') })` : ''
   }
 
 
@@ -89,12 +87,11 @@ class Generator {
    */
   generateOperation() {
     const result = {
-      operation: `${ this.operationType } ${ this.mapArgumentType } {
-                    ${ this.operationName } ${ this.mapArgumentName } {
+      operation: `${ this.operationType } ${ this.mapArgumentType() } {
+                    ${ this.operationName } ${ this.mapArgumentName() } {
                       ${ this.fields.join(',\n') }
                     }
-                  }
-      `,
+                  }`,
       variables: Object.assign(this.data, this.variables),
     };
 
@@ -103,4 +100,4 @@ class Generator {
 
 }
 
-export default Generator;
+module.exports = Generator;
