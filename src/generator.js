@@ -51,7 +51,7 @@ class Generator {
   /**
    * Map an argument to it's gql type
    *
-   * @returns {string} - an argument matched with its name
+   * @returns {string} - an argument matched with its type
    * @memberof Generator
    */
   mapArgumentType() {
