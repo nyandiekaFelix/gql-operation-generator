@@ -49,7 +49,7 @@ class Generator {
 
 
   /**
-   * Map an argument to it's gql type
+   * Map an argument to its gql type
    *
    * @returns {string} - an argument matched with its type
    * @memberof Generator
@@ -65,7 +65,7 @@ class Generator {
 
 
   /**
-   * Map an argument to it's gql name
+   * Map an argument to its gql name
    *
    * @returns {string} - an argument matched with its name
    * @memberof Generator
