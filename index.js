@@ -1,2 +1,1 @@
-import Generator from './src/generator';
-
+// import Generator from './src/generator';

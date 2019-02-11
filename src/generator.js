@@ -25,12 +25,12 @@ class Generator {
     this.fields = fields;
     this.data = data;
     this.variables = variables;
+
+    return this.generateOperation();
   }
 
 
   /**
-   *
-   *
    * @static
    * @param {*} - key
    * @returns {string} - The gql type of the key
@@ -56,9 +56,10 @@ class Generator {
    */
   mapArgumentType() {
     const props = Object.keys(this.data);
-    const reducer = (dataKey, currKey, index) => (
-      `${ dataKey }${ index !== 0 ? ', ' : ''}$${ currKey }: ${ this.constructor.getType(this.data[currKey]) }`
-    );
+    const reducer = (dataKey, currKey, index) => {
+      console.log('acc', dataKey, '\ncurr', currKey, '\nind', index);
+      return `${ dataKey }${ index !== 0 ? ', ' : ''}$${ currKey }: ${ this.constructor.getType(this.data[currKey]) }`
+    };
 
     return props.length ? `(${ props.reduce(reducer, '') })` : ''
   }
